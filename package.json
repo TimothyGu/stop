@@ -21,6 +21,7 @@
     "mkdirp": "^0.5.1",
     "pretty-bytes": "^3.0.0",
     "promise": "^7.1.1",
+    "svgo": "^0.7.0",
     "then-request": "^2.2.0",
     "throat": "~1.0.0",
     "uglify-js": "^2.7.0"

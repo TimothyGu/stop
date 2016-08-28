@@ -11,6 +11,7 @@ exports.checkStatusCodes = require('./lib/status-codes.js');
 exports.addFavicon = require('./lib/favicon.js');
 exports.minifyJS = require('./lib/minify-js.js');
 exports.minifyCSS = require('./lib/minify-css.js');
+exports.minifySVG = require('./lib/minify-svg.js');
 exports.addManifest = require('./lib/manifest.js');
 
 exports.writeFileSystem = require('./lib/write-file-system.js');
