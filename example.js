@@ -16,6 +16,6 @@ stop.getWebsiteStream('https://www.promisejs.org', {
 .syphon(stop.minifyJS())
 .syphon(stop.checkStatusCodes([200, 302]))
 .syphon(stop.writeFileSystem(__dirname + '/out'))
-.wait().done(function () {
+.wait().then(function () {
   console.log('success');
 });

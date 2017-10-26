@@ -27,7 +27,7 @@ stop.getWebsiteStream('http://example.com', {
 .syphon(stop.log())
 .syphon(stop.checkStatusCodes([200]))
 .syphon(stop.writeFileSystem(__dirname + '/output'))
-.wait().done(function () {
+.wait().then(function () {
   console.log('success');
 });
 ```

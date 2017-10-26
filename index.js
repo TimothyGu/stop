@@ -2,7 +2,6 @@
 
 var url = require('url');
 var Readable = require('barrage').Readable;
-var Promise = require('promise');
 var download = require('./lib/download.js');
 
 exports.log = require('./lib/log.js');
@@ -67,7 +66,7 @@ function getWebsiteStream(start, options) {
       return;
     }
     inProgress++;
-    return handleUri(queue.shift(), queue.push.bind(queue)).done(function (result) {
+    return handleUri(queue.shift(), queue.push.bind(queue)).then(function (result) {
       inProgress--;
       if (finished) return;
       if (result !== null) {
@@ -81,10 +80,14 @@ function getWebsiteStream(start, options) {
       }
     }, function (err) {
       inProgress--;
+      throw err;
+    }).catch(function (err) {
       if (finished) return;
       finished = true;
-      stream.emit('error', err);
-      stream.push(null);
+      process.nextTick(function () {
+        stream.emit('error', err);
+        stream.push(null);
+      });
     });
   }
 
